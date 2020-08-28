@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.74.3" />
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon-16x16.png" />
+<link rel="manifest" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/site.webmanifest" />
+<link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/safari-pinned-tab.svg" color="#8aa2d3" />
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon.ico" />
+<meta name="theme-color" content="#ffffff" />
+
+
+<title>Maryland Car Sales Data Analysis Report - Hayk Manasyan&#39;s Projects</title>
+
+
+<meta name="author" content="DSRKafuU" />
+
+
+<meta name="description" content="A minimal Hugo theme with nice theme color." />
+
+
+<meta property="og:title" content="Maryland Car Sales Data Analysis Report" />
+<meta property="og:description" content="The report summarizes the trends in new and used car sales in Maryland.
+This is my first data analysis report after I learned R and RStudio in June 2020." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/rmd_report_to_post/" />
+<meta property="og:image" content="/img/og.png"/>
+<meta property="article:published_time" content="2020-08-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-08-01T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/img/og.png"/>
+
+<meta name="twitter:title" content="Maryland Car Sales Data Analysis Report"/>
+<meta name="twitter:description" content="The report summarizes the trends in new and used car sales in Maryland.
+This is my first data analysis report after I learned R and RStudio in June 2020."/>
+
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+<link rel="stylesheet" href="/assets/css/fuji.min.css" />
+
+
+
+
+
+
+</head>
+
+<body data-theme="auto">
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="/">Hayk Manasyan&#39;s Projects</a>
+            
+            <span class="title-sub">From summer 2020 - the present</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="/post/rmd_report_to_post/">Maryland Car Sales Data Analysis Report</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-08-01</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;871 words</span>
+
+    </div>
+    
+    
+    <div class="post-content markdown-body">
+        
+
+
+<p>The report summarizes the trends in new and used car sales in Maryland.</p>
+<p>This is my first data analysis report after I learned R and RStudio in June 2020.</p>
+<div id="project-goal" class="section level3">
+<h3>Project Goal</h3>
+<p>The goal of this project is to evaluate the trends in new and used car sales to understand the influence of world events on the number of units sold and the total dollar amount.</p>
+<p>I hypothesize that there will be a decrease in the number of units sold and the total value during the years of 2008-2009 due to the financial crisis as well as a decline in sales in the spring of 2020 due to the COVID-19 pandemic.</p>
+</div>
+<div id="data-summary" class="section level3">
+<h3>Data Summary</h3>
+<p>Since the year of 2002, Maryland car sales have been recorded in terms of units and dollar values for both the new and used categories. The values are recorded on a monthly basis. I want to model the sales by unit and dollar amount for both the new and used categories to see how they are affected over time by world events, as well as to see the differences in the sale of new cars versus used cars per month.</p>
+<p>Data were downloaded from <a href="https://opendata.maryland.gov/resource/un65-7ipd.json" class="uri">https://opendata.maryland.gov/resource/un65-7ipd.json</a> on 24 August, 2020.</p>
+</div>
+<div id="statistical-approach-and-analysis" class="section level3">
+<h3>Statistical Approach and Analysis</h3>
+<div id="pre-processing" class="section level4">
+<h4>1. Pre-processing</h4>
+<p>I used the data for the total units sold and the dollar amounts for both the new and used categories. I created a data frame which will update from the website. Character objects were converted to numeric and months of each year - to categories for plotting.</p>
+</div>
+<div id="approach" class="section level4">
+<h4>2. Approach</h4>
+<p>Monthly units sold and total value amounts were plotted using line plots generated by the ggplot package. Each year was shown as a separate trend-line with 2008, 2009 and 2020 highlighted to depict the hypothesized changes. To quantify the changes, I calculated percent change between consecutive months. To reveal the change due to COVID-19, the first six months of the years 2018-2020, month to month percent change for units sold and total value are presented. In the table below, positive numbers indicate growth, while negative numbers indicate loss compared to the previous month of the year. January is left as NA to not compare with December of the previous year.</p>
+</div>
+</div>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<div id="overall-trends" class="section level4">
+<h4>1. Overall Trends</h4>
+<p>Figures 1 and 2 show the total number of units sold for new and used vehicles. As hypothesized, we observed a sharp decline in units sold for both new and used between the months of March and April in 2020 due to the beginning of shutdowns due to COVID-19.There is a especially large decline in used car sales in this time period, compared to new car sales. This decline is reversed by a comparable increase from May to June 2020.</p>
+<p>All other years appear to have consistent trend lines. However, the number of units begin to decline at the end of 2008 with the lowest numbers of new cars sold for almost all of 2009 mirroring the fiscal crisis at the time. The gap between 2008 and 2009 is not as pronounced for the sale of used cars. However, the numbers are still among the lowest.</p>
+<p><img src="/post/rmd_report_to_post_files/figure-html/new-1.png" width="672" />
+<img src="/post/rmd_report_to_post_files/figure-html/used-1.png" width="672" /></p>
+<p>Figures 3 and 4 show the total dollar amount of sales for new and used vehicles. There is a similar sharp decline in sales for both new and used between the months of March and April in 2020. All other years appear to have consistent trend lines. However, the numbers for the years 2008 and 2009 appear to be the smallest, but they still follow the consistent pattern.</p>
+<p><img src="/post/rmd_report_to_post_files/figure-html/newsale-1.png" width="672" /></p>
+<p><img src="/post/rmd_report_to_post_files/figure-html/usedsale-1.png" width="672" /></p>
+</div>
+<div id="percent-changes" class="section level4">
+<h4>2. Percent Changes</h4>
+<p>The calculated percent change for the first six months was compared from 2018 to 2020 and is presented in the table below.</p>
+<p>There is a consistent decline in February, with a rebound in March for all years. Changes in the month of April are near negligible, except for 2020, when new car sales saw about 40% decline while used car sales saw about 50% decline compared to March. The month of May shows a small increase in sales, and the increase/decrease in June is negligible except for 2020. The month of June sees a near 60% increase in new cars sales, and about 70% increase in used car sales.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">year</th>
+<th align="right">month</th>
+<th align="right">new</th>
+<th align="right">total_sales_new</th>
+<th align="right">total_sales_used</th>
+<th align="right">used</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2018</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">2018</td>
+<td align="right">2</td>
+<td align="right">-25.0</td>
+<td align="right">-27.6</td>
+<td align="right">-10.5</td>
+<td align="right">-1.3</td>
+</tr>
+<tr class="odd">
+<td align="left">2018</td>
+<td align="right">3</td>
+<td align="right">25.5</td>
+<td align="right">21.0</td>
+<td align="right">21.1</td>
+<td align="right">23.4</td>
+</tr>
+<tr class="even">
+<td align="left">2018</td>
+<td align="right">4</td>
+<td align="right">-0.7</td>
+<td align="right">2.0</td>
+<td align="right">-1.0</td>
+<td align="right">-1.8</td>
+</tr>
+<tr class="odd">
+<td align="left">2018</td>
+<td align="right">5</td>
+<td align="right">15.9</td>
+<td align="right">6.9</td>
+<td align="right">3.8</td>
+<td align="right">2.2</td>
+</tr>
+<tr class="even">
+<td align="left">2018</td>
+<td align="right">6</td>
+<td align="right">2.6</td>
+<td align="right">7.9</td>
+<td align="right">0.3</td>
+<td align="right">-4.3</td>
+</tr>
+<tr class="odd">
+<td align="left">2019</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">2019</td>
+<td align="right">2</td>
+<td align="right">-30.2</td>
+<td align="right">-32.5</td>
+<td align="right">-16.1</td>
+<td align="right">-10.7</td>
+</tr>
+<tr class="odd">
+<td align="left">2019</td>
+<td align="right">3</td>
+<td align="right">22.1</td>
+<td align="right">19.5</td>
+<td align="right">18.9</td>
+<td align="right">27.5</td>
+</tr>
+<tr class="even">
+<td align="left">2019</td>
+<td align="right">4</td>
+<td align="right">13.4</td>
+<td align="right">13.0</td>
+<td align="right">8.6</td>
+<td align="right">5.1</td>
+</tr>
+<tr class="odd">
+<td align="left">2019</td>
+<td align="right">5</td>
+<td align="right">-2.2</td>
+<td align="right">-3.2</td>
+<td align="right">1.8</td>
+<td align="right">-1.7</td>
+</tr>
+<tr class="even">
+<td align="left">2019</td>
+<td align="right">6</td>
+<td align="right">-0.9</td>
+<td align="right">2.5</td>
+<td align="right">-7.2</td>
+<td align="right">-8.8</td>
+</tr>
+<tr class="odd">
+<td align="left">2020</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">2020</td>
+<td align="right">2</td>
+<td align="right">-19.3</td>
+<td align="right">-23.2</td>
+<td align="right">-9.2</td>
+<td align="right">-4.4</td>
+</tr>
+<tr class="odd">
+<td align="left">2020</td>
+<td align="right">3</td>
+<td align="right">6.8</td>
+<td align="right">6.3</td>
+<td align="right">11.2</td>
+<td align="right">7.1</td>
+</tr>
+<tr class="even">
+<td align="left">2020</td>
+<td align="right">4</td>
+<td align="right">-42.6</td>
+<td align="right">-41.9</td>
+<td align="right">-49.2</td>
+<td align="right">-50.1</td>
+</tr>
+<tr class="odd">
+<td align="left">2020</td>
+<td align="right">5</td>
+<td align="right">8.3</td>
+<td align="right">4.5</td>
+<td align="right">8.2</td>
+<td align="right">27.7</td>
+</tr>
+<tr class="even">
+<td align="left">2020</td>
+<td align="right">6</td>
+<td align="right">59.8</td>
+<td align="right">58.5</td>
+<td align="right">73.5</td>
+<td align="right">68.7</td>
+</tr>
+</tbody>
+</table>
+<p>Figures 5 and 6 are showing percent change for the years 2002-2020 from previous months and January of the current year, respectively. Similar to the table above, positive values indicate an increase and negative values - a loss.</p>
+<pre><code>## Warning: Removed 19 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="/post/rmd_report_to_post_files/figure-html/unnamed-chunk-3-1.png" width="672" /><img src="/post/rmd_report_to_post_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+</div>
+<div id="acknowledgements" class="section level4">
+<h4>Acknowledgements</h4>
+<p>My special thanks to Dr.John Muschelli for his invaluable help with this report.</p>
+</div>
+</div>
+
+    </div>
+</article>
+
+
+<div class="license markdown-body">
+    <blockquote>
+        <p>Unless otherwise noted, the content of this site is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+               target="_blank">CC BY-NC-SA 4.0</a>.</p>
+    </blockquote>
+</div>
+
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/cloudstatic01" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    
+    
+
+    
+    
+</aside>
+        </div>
+        <div class="btn">
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            <span>&copy; 2020 <a href="/">DSRKafuU</a> |
+                Powered by <a href="https://github.com/amzrk2/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> & <a href="https://gohugo.io/"
+                   target="_blank">Hugo</a> </span>
+        </div>
+    </div>
+</footer>
+    
+<script defer src="https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.5,npm/lazysizes@5.2.2"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+</body>
+
+</html>

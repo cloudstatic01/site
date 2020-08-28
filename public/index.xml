@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hayk Manasyan&#39;s Projects</title>
+    <link>/</link>
+    <description>Recent content on Hayk Manasyan&#39;s Projects</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 01 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About Me</title>
+      <link>/about/</link>
+      <pubDate>Mon, 24 Aug 2020 19:15:32 +0800</pubDate>
+      
+      <guid>/about/</guid>
+      <description>I am a high school senior interested in learning tools for exploring data to answer interesting questions. I like working on creative challenges that require non-standard solutions. I enjoy learning world languages and culture and play two musical intruments.</description>
+    </item>
+    
+    <item>
+      <title>Maryland Car Sales Data Analysis Report</title>
+      <link>/post/rmd_report_to_post/</link>
+      <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rmd_report_to_post/</guid>
+      <description>The report summarizes the trends in new and used car sales in Maryland.
+This is my first data analysis report after I learned R and RStudio in June 2020.</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>/post.bak/2015-07-23-r-rmarkdown/</link>
+      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      
+      <guid>/post.bak/2015-07-23-r-rmarkdown/</guid>
+      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.</description>
+    </item>
+    
+  </channel>
+</rss>
