@@ -1,4 +1,4 @@
-baseURL = "https://example.com"
+baseURL = ""
 title = "Hayk Manasyan's Projects"
 
 theme = "hugo-theme-fuji"
